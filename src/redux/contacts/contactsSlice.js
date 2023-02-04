@@ -7,18 +7,17 @@ export const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        console.log(state)
-        state.contacts.push(action.payload);
 
+        state.contacts.push(action.payload);
       },
-      // prepare(text) {
-      //   return {
-      //     payload: {
-      //       text,
-      //       id: nanoid(),
-      //     },
-      //   },
-      // },
+      prepare(data) {
+        return {
+          payload: {
+            ...data,
+            id: nanoid(),
+          },
+        }
+      }
     },
     deleteContact (state,action) {
       return state.filter(contact => contact.id !== action.payload)},
