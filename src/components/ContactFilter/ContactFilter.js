@@ -1,16 +1,24 @@
 import styles from './ContactFilter.module.css';
 import { useDispatch } from 'react-redux';
+import { filterContact } from '../../redux/contacts/filterSlise';
 
-export const Filter = ( {value, onChange}) => (
+export const ContactFilter = ( {value}) => {
 
-// const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  <label className={styles.filter__label}>
-    Find contacts by name
-    <input
-      className={styles.filter__input}
-      type='text'
-      value={value}
-      onChange={onChange}/>
-  </label>
-)
+  const onChangeFilter = event => {
+    dispatch(filterContact(event.currentTarget.value));
+  }
+
+  return(
+    <label className={styles.filter__label}>
+      Find contacts by name
+      <input
+        className={styles.filter__input}
+        type='text'
+        value={value}
+        onChange={onChangeFilter} />
+    </label>
+    )
+
+}
