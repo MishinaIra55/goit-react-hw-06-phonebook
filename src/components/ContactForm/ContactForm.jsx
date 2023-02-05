@@ -14,6 +14,9 @@ export const ContactForm = () => {
         number: form.elements.number.value
       }
     ));
+
+
+
     form.reset();
   }
 
