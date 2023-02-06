@@ -4,7 +4,7 @@ import { filterContact } from '../../redux/contacts/filterSlice';
 import PropTypes from 'prop-types';
 
 export const ContactFilter = ( {value}) => {
-  console.log(value)
+
 
   const dispatch = useDispatch();
 
