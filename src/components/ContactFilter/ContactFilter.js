@@ -1,8 +1,10 @@
 import styles from './ContactFilter.module.css';
 import { useDispatch } from 'react-redux';
-import { filterContact } from '../../redux/contacts/filterSlise';
+import { filterContact } from '../../redux/contacts/filterSlice';
+import PropTypes from 'prop-types';
 
 export const ContactFilter = ( {value}) => {
+  console.log(value)
 
   const dispatch = useDispatch();
 
@@ -20,5 +22,8 @@ export const ContactFilter = ( {value}) => {
         onChange={onChangeFilter} />
     </label>
     )
+}
 
+ContactFilter.proTypes = {
+ value:PropTypes.string.isRequired,
 }

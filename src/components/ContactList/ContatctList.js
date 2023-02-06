@@ -6,16 +6,14 @@ export const ContactList = () => {
   const filter = useSelector(state => state.filter);
 
 
-
   const getFilteredList = () => {
 
     if (filter === '') {
       return contacts;
     } else {
       const normalizeFilter = filter.toLowerCase();
-       console.log(normalizeFilter)
 
-       return contacts.filter(item => item.name.toLowerCase().includes(normalizeFilter));
+      return contacts.filter(item => item.name.toLowerCase().includes(normalizeFilter));
     }
   };
 

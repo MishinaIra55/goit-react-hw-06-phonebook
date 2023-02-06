@@ -28,7 +28,6 @@ export const ContactForm = () => {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-
         <label>
           Name
           <input
