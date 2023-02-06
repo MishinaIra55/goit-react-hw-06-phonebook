@@ -1,24 +1,17 @@
-import {  configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { contactReducer } from './contacts/contactsSlice';
 import { filterReducer } from './contacts/filterSlise';
-
-
 import storage from 'redux-persist/lib/storage';
-import { persistStore, persistReducer, FLUSH,REHYDRATE, PAUSE,PERSIST,PURGE,REGISTER } from 'redux-persist';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 
 const persistConfig = {
   key: 'phonebook',
   storage,
-
-  whitelist:['contacts'],
-}
-
+  whitelist: ['contacts'],
+};
 
 const persistedReducer = persistReducer(persistConfig, contactReducer);
-
-
-
 
 export const store = configureStore({
   reducer: {

@@ -1,30 +1,30 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 
-export const ContactList =()=> {
+export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state);
+  const filter = useSelector(state => state.filter);
 
-  // getfilteredlist = () => {
-  //
-  //   if (filter === ''){
-  // return contacts;
-// } else {
-//   const normalizeFilter = filter.toLowerCase();
-//   return contacts.filter(sdfsdfsdf);
-// }
- // }
+
+
+  const getFilteredList = () => {
+
+    if (filter === '') {
+      return contacts;
+    } else {
+      const normalizeFilter = filter.toLowerCase();
+       console.log(normalizeFilter)
+
+       return contacts.filter(item => item.name.toLowerCase().includes(normalizeFilter));
+    }
+  };
 
   return (
 
-  <ul >
-
-    {getfilteredlist().map(item  => (
-
-      <ContactItem key={item.id} contact={item}/>
-
-    ))}
-
-  </ul>
-)
-}
+    <ul>
+      {getFilteredList().map(item => (
+        <ContactItem key={item.id} contact={item} />
+      ))}
+    </ul>
+  );
+};

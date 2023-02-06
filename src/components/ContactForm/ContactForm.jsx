@@ -1,24 +1,29 @@
 import styles from './ContactForm.module.css';
-import { useDispatch } from 'react-redux';
-import {addContact} from '../../redux/contacts/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/contacts/contactsSlice';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.contacts);
 
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    dispatch(addContact(
-      {
-        name: form.elements.name.value,
-        number: form.elements.number.value
-      }
-    ));
+    const contactData = contacts.find((user) => user.name === form.elements.name.value);
 
+    if (contactData) {
+      alert(`${form.elements.name.value} is already in contacts`);
+    } else {
+      dispatch(addContact(
+        {
+          name: form.elements.name.value,
+          number: form.elements.number.value,
+        },
+      ));
+      form.reset();
+    }
 
-
-    form.reset();
-  }
+  };
 
   return (
     <>
@@ -51,5 +56,5 @@ export const ContactForm = () => {
         <button type='submit'>Add contact</button>
       </form>
     </>
-  )
-}
+  );
+};
